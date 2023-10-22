@@ -16,7 +16,6 @@ pipeline {
     }
 
     stage('Packaging/Pushing imagae') {
-
       steps {
         withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
           sh 'docker build -t dockerlbt/springboot .'
@@ -33,7 +32,7 @@ pipeline {
         sh 'docker network create dev || echo "this network exists"'
         sh 'echo y | docker container prune '
 
-        sh 'docker container run -d --rm --name docker-springboot -p 8081:8080 --network dev  dockerlbt/springboot'
+        sh 'docker container run -d --rm --name docker-springboot -p 8090:8080 --network dev  dockerlbt/springboot'
       }
     }
   }
