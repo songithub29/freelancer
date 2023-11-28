@@ -1,5 +1,5 @@
 FROM openjdk:17-oracle
-RUN apt update && apt install -y maven
+RUN apt update && apt add --no-cache maven
 # Set the working directory
 WORKDIR /app
 # Copy your Maven project files
